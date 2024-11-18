@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
       getPages: Routes.routes,
       initialBinding: SplashViewBinding(),
       initialRoute: Routes.splashView,
-      // home: const SplashView(),
     );
   }
 }
