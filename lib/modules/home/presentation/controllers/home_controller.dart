@@ -6,6 +6,7 @@ import 'package:zippopotamus/utils/http_error.dart';
 
 class HomeController extends GetxController {
   Rx<TextEditingController> pinCodeController = TextEditingController().obs;
+  RxString selectedCountryCode = 'IN'.obs;
   final formKey = GlobalKey<FormState>();
 
   final FetchPinDataUseCase fetchPinData;
@@ -25,8 +26,9 @@ class HomeController extends GetxController {
   }
 
   getPinData() async {
-    PinUseCaseModel pinUseCaseModel =
-        PinUseCaseModel(pinCode: pinCodeController.value.text);
+    PinUseCaseModel pinUseCaseModel = PinUseCaseModel(
+        pinCode: pinCodeController.value.text,
+        country: selectedCountryCode.value);
     var response = await fetchPinData(pinUseCaseModel);
     response.fold((l) {
       if (l is AppError) {

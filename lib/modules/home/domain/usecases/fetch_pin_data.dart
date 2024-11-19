@@ -13,21 +13,23 @@ class FetchPinDataUseCase extends BaseUsecase<PinModel, PinUseCaseModel> {
   Future<Either<HttpError, PinModel>> call(
     PinUseCaseModel params,
   ) {
-    return repository.getPin(postcode: params.pinCode);
+    return repository.getPin(params: params);
   }
 }
 
 class PinUseCaseModel extends Params {
   String pinCode;
-  PinUseCaseModel({required this.pinCode});
+  String country;
+  PinUseCaseModel({required this.pinCode, required this.country});
 
   factory PinUseCaseModel.fromJson(Map<String, dynamic> json) {
-    return PinUseCaseModel(pinCode: json['pinCode']);
+    return PinUseCaseModel(pinCode: json['pinCode'], country: json['country']);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['pinCode'] = pinCode;
+    data['country'] = country;
     return data;
   }
 }

@@ -16,6 +16,7 @@ dependencies:
   talker_dio_logger: ^4.4.7
   dartz: ^0.10.1
   internet_connection_checker: ^1.0.0+1
+  country_pickers: ^3.0.1
 
   cupertino_icons: ^1.0.6
 
